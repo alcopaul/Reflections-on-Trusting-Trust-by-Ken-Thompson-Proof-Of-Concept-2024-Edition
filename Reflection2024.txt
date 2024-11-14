@@ -1,0 +1,135 @@
+Reflections on Trusting Trust by Ken Thompson Proof Of Concept 2024 Edition
+by alCoPaUL [GIMO][GOTH][b8]
+11/14/2024 NYC
+1st version: 8/27/2024
+
+Target IDE: Microsoft Visual Studio 2022
+Target Language: C/C++
+ 
+introduction
+------------
+bored so we will do some proving of concept with the most epic article of the great Ken Thompson..
+ 
+{begin}
+ 
+Say a well-crafted code injector that behaves like a virus infects a system and it sees a Programming IDE (for our example, 
+MS Visual Studio 2022)...
+ 
+And it's the C/C++ IDE..
+ 
+Let's say it's a header in the source code and/or piggybacking inside a compiled executable and when those, the source code and 
+the compiled executable are run in the IDE or by clicking it from a directory, all that it does is to install itself, the header,
+in the \include folder of the IDE in the current computer, search for source codes that can be infected, prepends the header
+reference to each of the source (i.e. #include <...>) found, inserts a call to the header in each of the source found and then exits.
+
+and when an infected source code or a compiled executable injected with the header function is run on a new computer, the process 
+above repeats.
+
+let's try to make it a little bit technical..
+ 
+this is a header file..
+ 
+#include <stdio.h>
+void intelx64() {
+    printf("%s","woot!");
+    char t = getchar();
+}
+ 
+let's save that as stidio.h
+ 
+and below is the main source code of the program.
+ 
+#include <iostream>
+ 
+int main()
+{
+    std::cout << "Hello World!\n";
+}
+ 
+We put them together..
+ 
+#include <stidio.h>
+#include <iostream>
+ 
+int main()
+{
+    std::cout << "Hello World!\n";
+    intelx64();
+}
+ 
+And that's the working stages of the whole thing..
+
+and let's just say that the function intelx64() is entry point obscuring aka can be inserted anywhere in the code where 
+it can be run and the open source code won't throw source formatting errors.
+
+so the above infected source code can be..
+
+#include <stidio.h>
+#include <iostream>
+ 
+int main()
+{
+    intelx64();
+    std::cout << "Hello World!\n";
+}
+
+cool, right?
+
+and stidio.h is in \include folder of the IDE so by default, it is accessible to any source code created by the IDE wizard..
+ 
+and the modded source code will display..
+
+-------------
+Hello World!
+woot!
+-------------
+
+when it is run..
+ 
+Now lets just say..
+ 
+The header file is in its virulent/injectable form..
+ 
+(viral function in pseudocode as stidio.h)
+
+----------------------------- stidio.h---------------------------- 
+#include <stdio.h>
+void intelx64() {
+    ohyeah();
+    printf("%s","woot!");
+    char t = getchar();
+}
+void ohyeah(){
+    copyselfto\include();
+    scansourcedirectory();
+    prependselfnametoheaderforeachsourcesfound();
+    injectcalltofunkforeachsouresfound();
+}
+void copyselfto\include(){...;}
+void scansourcedirectory(){.....;}
+void prependselfnametoheaderforeachsourcesfound(){.....}
+void injectcalltointelx64foreachsouresfound(){...}
+----------------------------- stidio.h----------------------------
+
+pretty much self-explanatory.
+ 
+when the source that was properly injected by stidio.h is compiled and is executed on another computer, it will replicate the 
+same way it did on the previous computer.
+
+and even when the infected source is loaded in the IDE and run there, it also does the same thing..
+
+note: you need write privileges to the \Program Files and \Program Files (x86). I would even assume that the \include folder of 
+Visual Studio 2022 for C/C++ is protected by the Software itself. But you can easily subvert Folder write protection now that 
+everything is open source.
+
+Or you can find another C/C++ IDE to play with.
+
+projection: i am thinking that IDEs of higher level languages like Java can do this and it will be much harder to make sense of or
+detect.
+ 
+{/begin}
+ 
+outroduction
+------------
+so ez...
+ 
