@@ -3,4 +3,4 @@
 This article describes a brand new meme called "Header Viruses".
 
 ~ alCoPaUL [GIMO[[GOTH][b8]
-11/14/2024
+11/14/2024 NYC
