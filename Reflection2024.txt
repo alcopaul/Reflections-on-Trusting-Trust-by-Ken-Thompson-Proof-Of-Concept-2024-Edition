@@ -1,7 +1,7 @@
 Reflections on Trusting Trust by Ken Thompson Proof Of Concept 2024 Edition
 by alCoPaUL [GIMO][GOTH][b8]
-11/14/2024 NYC
-1st version: 8/27/2024
+12/10/2024 NYC
+Versions: 8/27/2024, 11/14/2024
 
 Target IDE: Microsoft Visual Studio 2022
 Target Language: C/C++
