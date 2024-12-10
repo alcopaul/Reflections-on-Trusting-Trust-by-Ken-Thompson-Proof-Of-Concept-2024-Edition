@@ -103,12 +103,12 @@ void ohyeah(){
     copyselfto\include();
     scansourcedirectory();
     prependselfnametoheaderforeachsourcesfound();
-    injectcalltofunkforeachsouresfound();
+    injectcalltointelx64foreachsourcesfound();
 }
 void copyselfto\include(){...;}
 void scansourcedirectory(){.....;}
 void prependselfnametoheaderforeachsourcesfound(){.....}
-void injectcalltointelx64foreachsouresfound(){...}
+void injectcalltointelx64foreachsourcesfound(){...}
 ----------------------------- stidio.h----------------------------
 
 pretty much self-explanatory.
