@@ -1,7 +1,6 @@
 Reflections on Trusting Trust by Ken Thompson Proof Of Concept 2024 Edition
-by alCoPaUL [GIMO][GOTH][b8]
-12/10/2024 NYC
-Versions: 8/27/2024, 11/14/2024
+by alCoPaUL[GIMO][GOTH][As][aBrA][NPA][b8][BCVG][rRlf] | alcopaul@yahoo.com
+1/4/2025 NYC 5:27 PM EST
 
 Target IDE: Microsoft Visual Studio 2022
 Target Language: C/C++
@@ -107,8 +106,8 @@ void ohyeah(){
 }
 void copyselfto\include(){...;}
 void scansourcedirectory(){.....;}
-void prependselfnametoheaderforeachsourcesfound(){.....}
-void injectcalltointelx64foreachsourcesfound(){...}
+void prependselfnametoheaderforeachsourcesfound(){.....;}
+void injectcalltointelx64foreachsourcesfound(){...;}
 ----------------------------- stidio.h----------------------------
 
 pretty much self-explanatory.
